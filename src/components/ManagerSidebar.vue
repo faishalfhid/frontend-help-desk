@@ -82,12 +82,5 @@ const navigationItems = [
       </template>
     </nav>
 
-    <div class="manager-profile">
-      <span aria-hidden="true">AR</span>
-      <div>
-        <strong>Ahmad Rizky</strong>
-        <small>Pengelola</small>
-      </div>
-    </div>
   </aside>
 </template>
