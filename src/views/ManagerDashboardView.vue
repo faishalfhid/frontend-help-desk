@@ -1,17 +1,15 @@
 <script setup>
 import { computed, ref } from 'vue'
 import KpiCard from '../components/KpiCard.vue'
+import ManagerSidebar from '../components/ManagerSidebar.vue'
 import StatusBadge from '../components/StatusBadge.vue'
 import kpiGreen from '../assets/figma/kpi-green.svg'
 import kpiBlue from '../assets/figma/kpi-blue.svg'
 import kpiGold from '../assets/figma/kpi-gold.svg'
 import kpiRed from '../assets/figma/kpi-red.svg'
-import navDefault from '../assets/figma/nav-default.svg'
-import navActive from '../assets/figma/nav-active.svg'
 import downloadIcon from '../assets/figma/download.svg'
 import moreIcon from '../assets/figma/more.svg'
 
-const isNavigationOpen = ref(false)
 const period = ref('30')
 
 const periods = [
@@ -19,8 +17,6 @@ const periods = [
   { value: '30', label: '30 hari terakhir' },
   { value: '90', label: '90 hari terakhir' },
 ]
-
-const navigationItems = ['Dashboard', 'Tiket Baru', 'Antrean Tiket', 'Laporan', 'Audit Log']
 
 const kpis = [
   { title: 'Total Tiket', value: '248', note: '↑ 12% dari periode lalu', accent: 'blue', icon: kpiBlue },
@@ -84,59 +80,7 @@ function exportCsv() {
     class="dashboard-shell"
     data-node-id="1:2"
   >
-    <button
-      class="mobile-menu-button"
-      type="button"
-      :aria-expanded="isNavigationOpen"
-      aria-controls="manager-navigation"
-      @click="isNavigationOpen = !isNavigationOpen"
-    >
-      <span aria-hidden="true">☰</span>
-      <span>Menu</span>
-    </button>
-
-    <aside
-      id="manager-navigation"
-      class="sidebar"
-      :class="{ 'sidebar--open': isNavigationOpen }"
-    >
-      <div class="brand">
-        <div class="brand__mark">
-          UIN
-        </div>
-        <div>
-          <strong>UPA TIPD</strong>
-          <span>Helpdesk UIN Kediri</span>
-        </div>
-      </div>
-
-      <nav aria-label="Navigasi pengelola">
-        <a
-          v-for="item in navigationItems"
-          :key="item"
-          href="#"
-          :class="{ active: item === 'Dashboard' }"
-          :aria-current="item === 'Dashboard' ? 'page' : undefined"
-          @click="isNavigationOpen = false"
-        >
-          <img
-            :src="item === 'Dashboard' ? navActive : navDefault"
-            alt=""
-            width="20"
-            height="20"
-          >
-          {{ item }}
-        </a>
-      </nav>
-
-      <div class="manager-profile">
-        <span aria-hidden="true">AR</span>
-        <div>
-          <strong>Ahmad Rizky</strong>
-          <small>Pengelola</small>
-        </div>
-      </div>
-    </aside>
+    <ManagerSidebar active-item="Dashboard" />
 
     <main>
       <header class="page-header">

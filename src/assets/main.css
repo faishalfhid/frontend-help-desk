@@ -36,9 +36,9 @@
 * { box-sizing: border-box; }
 html { min-width: 320px; background: var(--color-background); }
 body { min-width: 320px; min-height: 100vh; margin: 0; }
-button, select { font: inherit; }
-button, a, select { -webkit-tap-highlight-color: transparent; }
-button:focus-visible, a:focus-visible, select:focus-visible {
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 3px solid rgba(36, 122, 89, 0.24);
   outline-offset: 2px;
 }
